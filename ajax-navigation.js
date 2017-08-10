@@ -57,7 +57,7 @@ var AjaxNavigation = function(options)
           navigation.load(navigation.prepareUrl(navigation.options.errors[xhr.status]));
         }
       }
-    }).success(function(data) {
+    }).done(function(data) {
       $(navigation.options.appSelector).html(data);
     });
   }
