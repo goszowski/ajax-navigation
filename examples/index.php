@@ -19,7 +19,12 @@
     <script src="../ajax-navigation.js"></script>
     <script type="text/javascript">
       $(function() {
-        var navigation = new AjaxNavigation;
+        var navigation = new AjaxNavigation({
+          errors: {
+            '404': '/examples/errors/404.php',
+          },
+        });
+
         navigation.onPageLoad(function() {
           console.log('loaded ...');
         });
