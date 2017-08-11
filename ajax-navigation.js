@@ -14,7 +14,8 @@ var AjaxNavigation = function(options)
       '403': false,
       '404': false,
       '500': false,
-    }
+    },
+    onPageLoad: null
 
 	};
 
@@ -59,12 +60,24 @@ var AjaxNavigation = function(options)
       }
     }).done(function(data) {
       $(navigation.options.appSelector).html(data);
+      if(typeof navigation.options.onPageLoad == 'function')
+      {
+        navigation.options.onPageLoad();
+      }
     });
   }
 
   this.prepareUrl = function(href)
   {
     return href += ((href.indexOf('?') + 1) ? '&' : '?') + this.options.argument;
+  }
+
+  this.onPageLoad = function(callback)
+  {
+    if(typeof callback == 'function')
+    {
+        this.options.onPageLoad = callback;
+    }
   }
 
   this.init();

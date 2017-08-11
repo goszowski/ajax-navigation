@@ -20,6 +20,9 @@
     <script type="text/javascript">
       $(function() {
         var navigation = new AjaxNavigation;
+        navigation.onPageLoad(function() {
+          console.log('loaded ...');
+        });
       });
     </script>
   </body>
